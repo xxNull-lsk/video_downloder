@@ -1,0 +1,9 @@
+# Miscellaneous
+tmp
+*.tmp
+*.ts
+*.key
+.idea
+__pycache__
+/windows/dist
+/windows/build
