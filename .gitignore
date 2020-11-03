@@ -4,6 +4,10 @@ tmp
 *.ts
 *.key
 .idea
+*.tar.gz
 __pycache__
+/linux/dist
+/linux/build
+/windows/dist
 /windows/dist
 /windows/build

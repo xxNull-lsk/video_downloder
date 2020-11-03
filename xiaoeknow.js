@@ -12,31 +12,36 @@
     function hook() {
     var oriXOpen = XMLHttpRequest.prototype.open;
     console.log("do hook...");
-    var x = document.getElementsByClassName('url_result')[0];
+    var x = document.getElementById('url_result');
     if (x == undefined) {
+        var y = document.createElement("div");
+        y.setAttribute("style", "position:absolute;font-size: small; width: 400px;word-break:break-all;margin: 100px 20px;");
+        document.body.insertBefore(y, document.body.firstChild);
+        var title = document.createElement("span");
+        title.innerText = "下载链接：";
+        y.appendChild(title);
+
         x = document.createElement("div");
         x.setAttribute("type", "text");
-        x.setAttribute("class", "url_result");
+        x.setAttribute("id", "url_result");
         x.setAttribute("data_url", "");
         x.setAttribute("key_url", "");
-        var title = document.getElementsByClassName('detail-title')[0];
-        if (title == undefined) {
+        var referer_url = location.protocol + "//" + location.host;
+        x.setAttribute("referer_url", referer_url);
+        var detail_title = document.getElementsByClassName('detail-title')[0];
+        if (detail_title == undefined) {
             x.setAttribute("video_name", "");
         } else {
-            x.setAttribute("video_name", title.innerText);
+            x.setAttribute("video_name", detail_title.innerText);
         }
-        x.setAttribute("style", "font-size: small; margin: 80px; ");
-        x.innerHTML = x.getAttribute("video_name") + "|" + x.getAttribute("data_url") + "|" + x.getAttribute("key_url");
-        document.body.insertBefore(x, document.body.firstChild);
+        x.setAttribute("style", "font-size: small; width: 400px;word-break:break-all;");
+        x.innerHTML = "";
+        y.appendChild(x);
     }
 
     XMLHttpRequest.prototype.open = function(method,url,asncFlag,user,password) {
-        var distribute = document.getElementsByClassName('distribute')[0];
-        if (distribute != undefined) {
-            distribute.setAttribute("style", "visibility:hidden;");
-        }
         if (url.indexOf("ts") != -1 || url.indexOf("key") != -1) {
-            var x = document.getElementsByClassName('url_result')[0];
+            var x = document.getElementById('url_result');
             if (x != undefined) {
                 var title = document.getElementsByClassName('detail-title')[0];
                 if (title != undefined) {
@@ -50,7 +55,8 @@
                 }
                 x.innerHTML = "<span style='color:blue;'>" + x.getAttribute("video_name") + "</span>|" +
                     "<span style='color:green;'>" + x.getAttribute("data_url") + "</span>|" +
-                    "<span style='color:red;'>" + x.getAttribute("key_url") + "</span>";
+                    "<span style='color:red;'>" + x.getAttribute("key_url") + "</span>|" +
+                    "<span style='color:blue;'>" + x.getAttribute("referer_url") + "</span>";
             }
             console.log(url);
         }
@@ -58,7 +64,7 @@
     };
 }
 
-var url_result = document.getElementsByClassName('url_result')[0];
+var url_result = document.getElementById('url_result');
 if (url_result == undefined){
     hook();
 }
