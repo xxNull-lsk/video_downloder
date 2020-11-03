@@ -11,3 +11,4 @@ __pycache__
 /windows/dist
 /windows/dist
 /windows/build
+/windows/*.7z
