@@ -6,7 +6,7 @@
 
 # 项目地址
 
-[](https://github.com/xxNull-lsk/video_downloder)
+[源码](https://github.com/xxNull-lsk/video_downloder)
 
 # 使用方法
 
@@ -20,7 +20,7 @@
 
 4. 复制视频页面顶部的url信息。
 
-   ![url信息](readme.assets/1.PNG)
+   ![url信息](readme.assets/1.png)
 
 5. 打开`xet下载器`并粘贴url信息，点击`下载`，等待一会即可下载成功。
 
