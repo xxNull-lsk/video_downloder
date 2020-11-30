@@ -3,6 +3,7 @@ import os
 from aes128 import Aes128
 import requests
 from contextlib import closing
+import m3u8
 
 
 class Downloader:
@@ -28,7 +29,17 @@ class Downloader:
                 index += 1
                 break
 
+    def download_m3u8(self, name, url, referer_url, index=None, progress=None):
+        m3u8_obj = m3u8.load(url)
+        seg = m3u8_obj.segments[-1]
+        return self.download(name, seg.absolute_uri, seg.key.absolute_uri, referer_url,
+                             index=index,
+                             progress=progress)
+
     def download(self, name, url, key_url, referer_url, index=None, progress=None):
+        if key_url == "" and 'm3u8' in url:
+            return self.download_m3u8(name, url, referer_url, index=index, progress=progress)
+            
         if index is not None:
             filename_tmp = os.path.join(self.temp_dir, "{:03}.{}.tmp".format(index, name))
             filename_key = os.path.join(self.temp_dir, "{:03}.{}.key".format(index, name))
