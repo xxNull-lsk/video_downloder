@@ -12,7 +12,7 @@
 
 1. 在浏览器中安装油猴Tampermonkey
 
-2. 在Tampermonkey中新增脚本`xiaoeknow.js`
+2. 在Tampermonkey中新增脚本`video downloader.js`
 
 3. 访问视频页面，播放视频并**将视频拖动在结尾处**。
 

@@ -1,13 +1,13 @@
-version=`cat ../version`
-rm -rf ./dist/xet下载器_${version} >/dev/null 2>&1
+version=`cat ../.version`
+rm -rf ./dist/video_downloader_${version} >/dev/null 2>&1
 
 pyinstaller -w main.spec
 
-mkdir ./xet下载器_${version}
-mv ./dist/xet下载器 ./xet下载器_${version}
+mkdir ./video_downloader_${version}
+mv ./dist/video_downloader ./video_downloader_${version}
 
-cp ../readme.pdf ./xet下载器_${version}
-cp ../xiaoeknow.js ./xet下载器_${version}
+cp ../readme.pdf ./video_downloader_${version}
+cp "../video downloader.js" ./video_downloader_${version}
 
-tar -czf xet下载器_${version}.tar.gz xet下载器_${version}
-mv xet下载器_${version} ./dist/
+tar -czf linux_video_downloader_${version}.tar.gz video_downloader_${version}
+mv video_downloader_${version} ./dist/

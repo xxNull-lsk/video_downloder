@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         小鹅通
+// @name         video downloader
 // @namespace    http://tampermonkey.net/
 // @version      0.3
 // @description  try to take over the world!

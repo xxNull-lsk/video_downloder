@@ -37,7 +37,9 @@ class MyMainWindow(QWidget):
         self.thread = None
 
         self.resize(360, 360)
-        self.setWindowTitle("xet下载器")
+        with open('.version', 'r') as f:
+            ver = f.read()
+        self.setWindowTitle("video downloader {}".format(ver))
 
         self.root_layout = QVBoxLayout(self)
         self.root_layout.setContentsMargins(10, 10, 10, 10)
@@ -110,6 +112,7 @@ class MyMainWindow(QWidget):
 
     def on_help(self):
         QtGui.QDesktopServices.openUrl(QtCore.QUrl('https://github.com/xxNull-lsk/video_downloder'))
+        QtGui.QDesktopServices.openUrl(QtCore.QUrl('./readme.pdf'))
 
 
 if __name__ == '__main__':
